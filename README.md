@@ -1,6 +1,6 @@
 ## People Bingo Generator
 
-[IMG]
+![Screenshot](https://github.com/ksugiarto/people-bingo/blob/master/public/images/screenshot.png)
 
 This is a small NodeJS application to generate People Bingo. Some called Human Bingo, so what is People Bingo?
 
