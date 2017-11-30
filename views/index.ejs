@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <!-- h1 with height here is to skip 1 A4 page due to different header's margin on browser -->
+    <h1 style="height: 990px"></h1>
+
+    <script>
+      // put your list here
+      var boards = [
+        "Pernah katam Alkitab 5 kali",
+        "Yang hari ini makan soto",
+        "Ulang tahun di bulan Oktober",
+        "Pernah ke KKR pakai sandal jepit",
+        "Punya nama lebih dari 4 kata",
+        "Lahir di luar Surabaya",
+        "Ingat tanggal ibadah terakhir di cempaka",
+        "Anak kos di Surabaya",
+        "Lebih dari 5 bersaudara",
+        "Sekarang kerja di bidang keuangan",
+        "Nge-gym teratur",
+        "Masih jomblo, dan ada rasa sama anak satu CG/Poksar",
+        "Pingin nikah tahun depan",
+        "Bawa HP lebih dari 2",
+        "Suka makan Indomie double",
+        "Paling tampan disini",
+        "Youtuber / video content creator",
+        "Biasa Insta-story 10x sehari",
+        "Ngopi 2x sehari",
+        "Hobby nonton drama India",
+        "Punya 3 edisi 'I Love My Bible'",
+        "Yang bulan lalu ga pernah bolong ibadah PRO-M",
+        "Sedang pakai alas kaki baru hari ini",
+        "Bisa bersiul pakai jari",
+        "Pecinta 'Star Wars'",
+        "Lahir di bulan yang sama dengan mu",
+        "Yang nyimpan ttd / foto dengan artis",
+        "Pernah baca semua buku 'Harry Potter'",
+        "Hafal nama lengkap keluarga Mantofa",
+        "Tidak punya Instagram",
+        "Bertangan kidal",
+        "Punya keponakan yang lebih tua",
+        "Takut laba-laba",
+        "Bisa bahasa Perancis",
+        "Alergi keju",
+      ];
+
+      function getBoard() {
+        var currentBoard = [];
+        // this will only take 25 unique item from the above list
+        while (currentBoard.length <= 24) {
+          var board = boards[Math.floor(Math.random()*boards.length)];
+          if(currentBoard.indexOf(board) < 0) {
+            currentBoard.push(board);
+          }
+        };
+
+        var counter = 0
+        var bingo = "BINGO";
+        var table = document.createElement("table");
+        table.setAttribute("border", "2")
+        for (var i = 1; i <= 6; i++) {
+          var tr = document.createElement("tr");
+          table.appendChild(tr);
+          for (var j = 1; j <= 6; j++) {
+            var td = document.createElement("td");
+            if (i==1 && j==1) {
+              var t = document.createTextNode("")
+            } else if (i==1) {
+              td.style.cssText = 'width:150px;height:30px;vertical-align:top;text-align:center;font-weight:bold;font-size:30px;'
+              var t = document.createTextNode(bingo[j-2])
+            } else if (j==1) {
+              td.style.cssText = 'height:91px;width:50px;vertical-align:middle;text-align:center;font-weight:bold;font-size:30px;'
+              var t = document.createTextNode(bingo[i-2])
+            } else {
+              td.style.cssText = 'height:91px;width:150px;vertical-align:top;text-align:center;font-weight:bold;'
+              var t = document.createTextNode(currentBoard[counter])
+              counter++;
+            }
+            tr.appendChild(td);
+            td.appendChild(t);
+          }
+        }
+
+        document.body.appendChild(table);
+        document.body.appendChild(document.createElement("p"));
+      }
+
+      window.onload = () => {
+        // change the number here to fit how much do you need
+        for (var i = 1; i <= 60; i++) {
+          getBoard();
+        }
+      }
+    </script>
+  </body>
+</html>
